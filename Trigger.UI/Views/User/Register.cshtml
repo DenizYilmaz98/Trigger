@@ -1,0 +1,49 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function register() {
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        const data = { email: email, password: password, firstname: firstname, lastname: lastname };
+
+        fetch(ApiUrl + 'user/register', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.userId) {
+                    document.location.href = "/user/login/ ";
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+
+ 
+<div class="login-register-form">
+    <div class="col col-md-10">
+        <input class="form-control" type="text" id="email" placeholder="Email"/>
+    </div>
+    <div class="col col-md-10">
+        <input class="form-control" type="text" id="firstname" placeholder="First Name" />
+    </div>
+    <div class="col col-md-10">
+        <input class="form-control" type="text" id="lastname" placeholder="Lassst Name"/>
+    </div>
+    <div class="col col-md-10">
+        <input class="form-control" type="text" id="password" placeholder="Password"/>
+    </div>
+    <div class="col-12 mt-10">
+        <button class="button button-primary button-outline" onclick="javascript: register()">Kayit Ol</button>
+    </div>
+</div>
