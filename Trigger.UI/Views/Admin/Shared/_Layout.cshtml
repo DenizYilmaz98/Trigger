@@ -27,39 +27,71 @@
             height:100%;
         }
 
+        .News{
+            padding :150px;
+            background-color:black;
+            border-radius:10px;
+            position:absolute;
+            top:10px;
+            right:0px;
+            
+        }
     </style>
     </head>
 <body>
     <div class="row mainarea" style="height:100%">
         <div class="col-3 menuarea">
-            <div class="side-header-inner custom-scroll" >
+            <div class="side-header-inner custom-scroll">
                 <nav class="side-header-menu" id="side-header-menu">
                     <ul>
                         <li>
                             <div class="border" id="userDetail"></div>
                         </li>
                         <li>
-                            <a class="nav-link text-dark" href="/Admin/User">Kullanıcılar</a>
+                            <a class="nav-link text-dark" href="/Admin">#Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" href="/Admin/User">#Kullanıcılar</a>
                         </li>
 
                         <li>
-                            <a class="btn " href="javascript:logout()">Çıkış</a>
-
+                            <a class="btn " href="javascript:logout()">#Çıkış</a>
                         </li>
 
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="col-9 contentarea">
-            @RenderBody()
+        <div class="News">
+        <div class="side-inner custom-scroll">
+            <nav class="side-header-menu" id="side-header-menu">
+                <ul>
+                    <li>
+                        <div class="border" id="userDetail">#</div>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" href="">#</a>
+                    </li>
+
+                    <li>
+                        <a class="btn ">#</a>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
     </div>
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            document.location.href = "/User/Login";
-        }
-    </script>
+       
+            <div class="col-9 contentarea">
+                @RenderBody()
+            </div>
+        </div>
+        <script>
+            function logout() {
+                localStorage.removeItem("token");
+                document.location.href = "/User/Login";
+            }
+
+        </script>
 </body>
 </html>

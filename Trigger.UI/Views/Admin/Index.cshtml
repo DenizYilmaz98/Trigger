@@ -1,8 +1,37 @@
 ﻿@{ 
-    Layout = "~/Views/Admin/Shared/_Layout.cshtml";
-    
+    Layout = "~/Views/Admin/Shared/_Layout.cshtml";    
 }
 <style>
-   
+    .box {
+        border-radius: 10px;
+        width: 500px;
+        padding: 10px;
+    }
+     input{
+        border-radius:10px;
+        height:50px;
+        width:95%;
+    }
+        
+    .box button{
+        border-radius:5px;
+    }
+    .box button:hover{
+        background-color:orange;
+    }
 </style>
-111
+
+<div class="box">
+    <div>
+        <input type="text" placeholder="Haydi Triggerla" />
+    </div>
+    <div>       
+        <button onclick="javascript:post()">Triggerla</button>
+    </div>
+</div>
+<script>
+    function AddTrigger() {
+        
+
+    }
+</script>

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Trigger.Data.Model
 {
     [Table("User")]
-
     public class User:BaseEntity
     {
 

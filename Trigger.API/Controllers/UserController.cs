@@ -1,5 +1,4 @@
 ﻿using Mapster;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Trigger.API.Model.UserModel;
+using Trigger.API.Attributes;
 using Trigger.Service.Abstract;
 using Trigger.Service.Model.UserModel;
 using static Trigger.API.Model.UserModel.UserListIdViewModel;
@@ -40,8 +40,8 @@ namespace Trigger.API.Controllers
             return new LoginViewModel() { Token = response.Token };
         }
         [HttpPost("Save")]
+     
         [Authorize]
-
         public SaveRegisterViewModel Save(SaveRegisterInputModel saveRegisterInputModel)
         {
             var model = saveRegisterInputModel.Adapt<SaveRegisterDto>();

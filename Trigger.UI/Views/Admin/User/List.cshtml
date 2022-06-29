@@ -2,21 +2,25 @@
     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
 }
 <style>
+    .table{
+        width:600px;
+        height:200px;
+        padding:5px;
+        background-color:black;
+    }
     th {
         color: #ffff;
     }
 </style>
-<div>
-<table id="dataArea" class="display" width="100%" data-page-length='25'>
+<div class="table">
+<table id="dataArea" class="display" width="50%" data-page-length='25'>
     <thead>
         <tr>
             <th>İsim</th>
             <th>Soyİsim</th>
             <th>Email</th>
             <th></th>
-
-
-        </tr>
+        </tr> 
     </thead>
 </table>
 </div>
@@ -40,12 +44,8 @@
                         { data: 'firstName' },
                         { data: 'lastName' },
                         { data: 'email' },
-                        //{
-                        //    data: null,
-                        //    render: function (data, type, row) {
-                        //        return "<a href='/Admin/User/Detail?id=" + row.id + "'>Detay</a> ";
-                        //    }
-                        //}
+                        
+                       
                     ],
                 });
             })
