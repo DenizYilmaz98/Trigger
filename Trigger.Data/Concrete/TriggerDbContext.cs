@@ -16,6 +16,7 @@ namespace Trigger.Data.Concrete
 
         public DbSet<User> Users { get; set; }
         public DbSet<CommentData> CommentDatas { get; set; }
+        public DbSet<TriggerAdded> triggerAddeds { get; set; }
         public TriggerDbContext(DbContextOptions<TriggerDbContext> options, IOptions<AppSettings> config) : base(options)
         {
             _config = config;

@@ -31,7 +31,12 @@ namespace Trigger.UI.Controllers
         {
             return View("~/Views/Admin/User/Detail.cshtml",id);
         }
-      
+        [HttpGet("TriggerAdded")]
+        public IActionResult Trigger()
+        {
+            return View("~/Views/Admin/TriggerAdded/List.cshtml");
+        }
+
 
     }
 }

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Trigger.API.Model.TriggerAddedModel
 {
-    public class TriggerAddedViewModel
+    public class GetTriggerAddedViewModel
     {
-        public Guid TriggerAddedId { get; set; }
+        public Guid id { get; set; }
+        public string comment { get; set; }
     }
 }

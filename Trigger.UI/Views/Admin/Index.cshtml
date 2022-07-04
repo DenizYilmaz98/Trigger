@@ -23,15 +23,37 @@
 
 <div class="box">
     <div>
-        <input type="text" placeholder="Haydi Triggerla" />
+        <input type="text" placeholder="Haydi Triggerla" id="comment" />
     </div>
     <div>       
-        <button onclick="javascript:post()">Triggerla</button>
+        <button onclick="javascript:Save()">Triggerla</button>
     </div>
 </div>
 <script>
-    function AddTrigger() {
-        
 
+    function Save() {
+        var comment = $("#comment").val();
+
+        const data = { comment: comment }
+        var token = localStorage.getItem("token");
+
+        fetch(ApiUrl + 'TriggerAdded/Save', {
+            methods: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "token": token
+            },
+            body: JSON.stringify(data)
+            
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data) alert("Gönderiniz başarılıdır")
+                document.location.href = "/Admin/Index";
+
+            })
+            .catch((error) => {
+                console('Error:', error)
+            })
     }
 </script>

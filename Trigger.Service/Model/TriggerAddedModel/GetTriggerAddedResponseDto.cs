@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Trigger.Service.Model.TriggerAddedModel
 {
-    public class TriggerModelDto
+    public class GetTriggerAddedResponseDto
     {
+        public string comment { get; set; }
     }
 }

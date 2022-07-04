@@ -1,0 +1,29 @@
+﻿<script>
+const { post } = require("jquery");
+
+    function Save() {
+        var comment = $("#comment").val();
+
+        const data = { comment: comment }
+        var token = localStorage.getItem("token");
+
+        fetch(ApiUrl + 'TriggerAdded/Save', {
+            methods: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "token": token
+            },
+            body: JSON.stringify(data)
+
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data) alert("Gönderiniz başarılıdır")
+                document.location.href = "/Admin/Index";
+
+            })
+            .catch ((error) =>{
+                console('Error:',error)
+       }) 
+    }
+</script>
