@@ -9,5 +9,6 @@ namespace Trigger.Service.Model.TriggerAddedModel
     public class GetTriggerAddedResponseDto
     {
         public string comment { get; set; }
+
     }
 }

@@ -28,5 +28,17 @@ namespace Trigger.Data.Concrete
             _triggerDbContext.Remove(userId);
             _triggerDbContext.SaveChanges();
         }
+
+        public TriggerAdded Get(Guid triggerAddedId)
+        {
+            return _triggerDbContext.triggerAddeds.Where(m=>m.Id== triggerAddedId).FirstOrDefault();
+            _triggerDbContext.SaveChanges();
+        }
+
+        public List<TriggerAdded> List(Guid triggerAddedId)
+        {
+            return _triggerDbContext.triggerAddeds.Where(m => m.Id == triggerAddedId).ToList();
+            _triggerDbContext.SaveChanges();
+        }
     }
 }

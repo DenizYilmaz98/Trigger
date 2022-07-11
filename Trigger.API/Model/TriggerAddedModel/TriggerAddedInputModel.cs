@@ -7,6 +7,6 @@ namespace Trigger.API.Model.TriggerAddedModel
 {
     public class TriggerAddedInputModel
     {
-         
+        public string comment { get; set; }
     }
 }

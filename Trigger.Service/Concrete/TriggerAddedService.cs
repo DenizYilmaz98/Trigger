@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mapster;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,17 @@ namespace Trigger.Service.Concrete
             _triggerAddedRepository.Delete(userId);
         }
 
-        
+        public GetTriggerAddedResponseDto Get(Guid tableAddedId)
+        {
+            var model = _triggerAddedRepository.Get(tableAddedId);
+            return model.Adapt<GetTriggerAddedResponseDto>();
+        }
+
+        public List<ListTriggerAddedModelDto> List(Guid triggerAddedId)
+        {
+            List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List(triggerAddedId);
+            return triggerAddeds.Select(m => m.Adapt<ListTriggerAddedModelDto>()).ToList();
+        }
 
         public Guid Save(TriggerAddModelDto triggerAddModelDto)
         {

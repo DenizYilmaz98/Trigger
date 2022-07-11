@@ -39,16 +39,15 @@ namespace Trigger.API.Controllers
             var response = _userService.Login(model);
             return new LoginViewModel() { Token = response.Token };
         }
-        [HttpPost("Save")]
-     
-        [Authorize]
-        public SaveRegisterViewModel Save(SaveRegisterInputModel saveRegisterInputModel)
-        {
-            var model = saveRegisterInputModel.Adapt<SaveRegisterDto>();
-            model.Id = _userContext.UserId;
-            var userId = _userService.Save(model);
-            return new SaveRegisterViewModel() { UserId = userId };
-        }
+        //[HttpPost("Save")]
+        //[Authorize]
+        //public SaveRegisterViewModel Save(SaveRegisterInputModel saveRegisterInputModel)
+        //{
+        //    var model = saveRegisterInputModel.Adapt<SaveRegisterDto>();
+        //    model.Id = _userContext.UserId;
+        //    var userId = _userService.Save(model);
+        //    return new SaveRegisterViewModel() { UserId = userId };
+        //}
         [HttpPost("ListUsers")]
         [Authorize]
         public UserListIdViewModel ListUsers()
