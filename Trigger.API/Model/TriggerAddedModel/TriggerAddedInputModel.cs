@@ -7,6 +7,7 @@ namespace Trigger.API.Model.TriggerAddedModel
 {
     public class TriggerAddedInputModel
     {
+        public Guid Id { get; set; }
         public string comment { get; set; }
     }
 }

@@ -8,11 +8,11 @@ using Trigger.Data.Model;
 
 namespace Trigger.Data.Concrete
 {
-    public class TriggerAddedRepository : ITriggerAddedRepository
+    public class TriggerAddedRepository :TriggerDbRepository<TriggerAdded>, ITriggerAddedRepository
     {
         private readonly TriggerDbContext _triggerDbContext;
 
-        public TriggerAddedRepository(TriggerDbContext triggerDbContext)
+        public TriggerAddedRepository(TriggerDbContext triggerDbContext):base(triggerDbContext)
         {
             _triggerDbContext = triggerDbContext;
         }

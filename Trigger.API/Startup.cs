@@ -44,9 +44,11 @@ namespace Trigger.API
             });
             services.AddScoped<UserContext>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITriggerAddedService, TriggerAddedService>();
 
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITriggerAddedRepository, TriggerAddedRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -34,62 +34,88 @@
     <table id="dataArea" class="display" width="100%" data-page-length='25'>
         <thead>
             <tr>
-                <th>Ürün</th>
+                <th>Gönderi</th>
                 <th></th>
             </tr>
         </thead>
     </table>
 </div>
 <script>
+    var Id = '@Model';
+    function save() {
+        var comment = $("#comment").val();
 
-    function Delete(id) {
+        const data = { comment:comment,id:Id };
         var token = localStorage.getItem("token");
-        fetch(ApiUrl + 'triggeradded/delete?id=' + id, {
-            method: 'POST', // or 'PUT'
+
+        fetch(ApiUrl+'triggeradded/save', {
+            method: 'POST', // or 'PUT
             headers: {
                 'Content-Type': 'application/json',
-                'token': token
-            }
-        })
-            .then(data => {
-                document.location.reload();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
-    function init() {
-        var token = localStorage.getItem("token");
-        fetch(ApiUrl + 'triggeradded/list', {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
+                "token": token
+            },
+            body: JSON.stringify(data),
         })
             .then(response => response.json())
             .then(data => {
+                if (data) alert("kayıt başarılı")
+                document.location.href = "/Admin/TriggerAdded";
 
-
-                $('#dataArea').DataTable({
-                    data: data.list,
-                    columns: [
-                        { data: 'comment' },
-                        {
-                            data: null,
-                            render: function (data, type, row) {
-                                return "<a href='/Admin/triggeradded/Detail?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
-                            }
-                        }
-                    ],
-                });
             })
             .catch((error) => {
                 console.error('Error:', error);
-            });
 
+            });
     }
-    $(document).ready(function () {
-        init();
-    })
+
+    //function Delete(id) {
+    //    var token = localStorage.getItem("token");
+    //    fetch(ApiUrl + 'triggeradded/delete?id=' + id, {
+    //        method: 'POST', // or 'PUT'
+    //        headers: {
+    //            'Content-Type': 'application/json',
+    //            'token': token
+    //        }
+    //    })
+    //        .then(data => {
+    //            document.location.reload();
+    //        })
+    //        .catch((error) => {
+    //            console.error('Error:', error);
+    //        });
+    //}
+    //function init() {
+    //    var token = localStorage.getItem("token");
+    //    fetch(ApiUrl + 'triggeradded/list', {
+    //        method: 'POST',
+    //        headers: {
+    //            'Content-Type': 'application/json',
+    //            'token': token
+    //        }
+    //    })
+    //        .then(response => response.json())
+    //        .then(data => {
+
+
+    //            $('#dataArea').DataTable({
+    //                data: data.list,
+    //                columns: [
+    //                    { data: 'comment' },
+    //                    {
+    //                        data: null,
+    //                        render: function (data, type, row) {
+    //                            return "<a href='/Admin/triggeradded/Detail?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
+    //                        }
+    //                    }
+    //                ],
+    //            });
+    //        })
+    //        .catch((error) => {
+    //            console.error('Error:', error);
+    //        });
+
+    //}
+    //$(document).ready(function () {
+    //    init();
+    //})
 </script>

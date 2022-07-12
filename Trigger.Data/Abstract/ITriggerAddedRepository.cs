@@ -7,7 +7,7 @@ using Trigger.Data.Model;
 
 namespace Trigger.Data.Abstract
 {
-    public interface ITriggerAddedRepository
+    public interface ITriggerAddedRepository:ITriggerDbRepository<TriggerAdded>
     {
         void Add(TriggerAdded triggerAdded);
         void Delete(Guid userId);

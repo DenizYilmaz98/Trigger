@@ -40,12 +40,17 @@ namespace Trigger.Service.Concrete
         public Guid Save(TriggerAddModelDto triggerAddModelDto)
         {
             var triggerAdded = new TriggerAdded();
-            triggerAdded.Id = triggerAddModelDto.userId;
             triggerAdded.Comment = triggerAddModelDto.comment;
-            if (triggerAddModelDto.userId==Guid.Empty)
+            if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
+                _triggerAddedRepository.Insert(triggerAdded);
                 
+            }
+            else
+            {
+                triggerAdded.Id = triggerAddModelDto.Id;
+                _triggerAddedRepository.Update(triggerAdded);
             }
             return triggerAdded.Id;
         }

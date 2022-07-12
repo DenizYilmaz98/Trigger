@@ -13,6 +13,8 @@ using static Trigger.Service.Model.TriggerAddedModel.TableAddedListViewModel;
 
 namespace Trigger.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class TriggerAddedController : ControllerBase
     {
         private readonly ITriggerAddedService _triggerAddedService;
@@ -28,7 +30,6 @@ namespace Trigger.API.Controllers
         public TriggerAddedViewModel Save(TriggerAddedInputModel triggerAddedInputModel)
         {
             var model = triggerAddedInputModel.Adapt<TriggerAddModelDto>();
-             model.userId = _userContext.UserId;
             var triggerAddedId = _triggerAddedService.Save(model);
             return new TriggerAddedViewModel { TriggerAddedId = triggerAddedId };
         }

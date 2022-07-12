@@ -8,7 +8,7 @@ namespace Trigger.Service.Model.TriggerAddedModel
 {
     public class TriggerAddModelDto
     {
-        public  Guid userId { get; set; }
+        public  Guid Id { get; set; }
         public string comment { get; set; }
     }
 }
