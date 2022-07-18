@@ -42,16 +42,16 @@ namespace Trigger.API.Controllers
         //}
         //[HttpPost("List")]
         //[Authorize]
-        //public TableAddedListViewModel List(Guid id)
-        //{
-        //    var triggerAddedModelDtos = _triggerAddedService.List(id);
-        //    return new TableAddedListViewModel()
-        //    {
-        //        List = triggerAddedModelDtos.Select(m => m.Adapt<TableAddedListViewRowModel>()).ToList()
+        public TableAddedListViewModel List(Guid id)
+        {
+            var triggerAddedModelDtos = _triggerAddedService.List(id);
+            return new TableAddedListViewModel()
+            {
+                List = triggerAddedModelDtos.Select(m => m.Adapt<TableAddedListViewRowModel>()).ToList()
 
-        //    };
+            };
 
-        //}
+        }
 
         //[HttpDelete]
         //public void Delete(Guid userId)

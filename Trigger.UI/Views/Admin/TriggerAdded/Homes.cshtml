@@ -67,7 +67,63 @@
 
             });
     }
+    function init() {
+        var token = localStorage.getItem("token");
+        fetch(ApiUrl + 'triggeradded/list', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
 
+
+                $('#dataArea').DataTable({
+                    data: data.list,
+                    columns: [
+                        { data: 'productName' },
+                        { data: 'unitprice' },
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return "<a href='/Admin/TriggerAdded/Homes?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
+                            }
+                        }
+                    ],
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+    }
+    $(document).ready(function () {
+        init();
+    })
+    //$(document).ready(function () {
+    //    if (Id != "") {
+    //        var token = localStorage.getItem("token");
+    //        fetch(ApiUrl + 'triggeradded/get?id=' + Id, {
+    //            method: 'POST', // or 'PUT'
+    //            headers: {
+    //                'Content-Type': 'application/json',
+    //                'token': token
+    //            }
+    //        })
+    //            .then(response => response.json())
+    //            .then(data => {
+    //                if (data) {
+
+    //                    $("#comment").val(data.comment);
+    //                }
+    //            })
+    //            .catch((error) => {
+    //                console.error('Error:', error);
+    //            });
+    //    }
+    //})
     //function Delete(id) {
     //    var token = localStorage.getItem("token");
     //    fetch(ApiUrl + 'triggeradded/delete?id=' + id, {
@@ -84,38 +140,5 @@
     //            console.error('Error:', error);
     //        });
     //}
-    //function init() {
-    //    var token = localStorage.getItem("token");
-    //    fetch(ApiUrl + 'triggeradded/list', {
-    //        method: 'POST',
-    //        headers: {
-    //            'Content-Type': 'application/json',
-    //            'token': token
-    //        }
-    //    })
-    //        .then(response => response.json())
-    //        .then(data => {
-
-
-    //            $('#dataArea').DataTable({
-    //                data: data.list,
-    //                columns: [
-    //                    { data: 'comment' },
-    //                    {
-    //                        data: null,
-    //                        render: function (data, type, row) {
-    //                            return "<a href='/Admin/triggeradded/Detail?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
-    //                        }
-    //                    }
-    //                ],
-    //            });
-    //        })
-    //        .catch((error) => {
-    //            console.error('Error:', error);
-    //        });
-
-    //}
-    //$(document).ready(function () {
-    //    init();
-    //})
+  
 </script>
