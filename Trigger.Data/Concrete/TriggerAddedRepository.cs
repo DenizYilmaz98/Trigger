@@ -35,9 +35,9 @@ namespace Trigger.Data.Concrete
         //    return _triggerDbContext.triggerAddeds.Where(m=>m.Id== triggerAddedId).FirstOrDefault();
         //}
 
-        public List<TriggerAdded> List(Guid triggerAddedId)
+        public List<TriggerAdded> List(Guid userId)
         {
-            return _triggerDbContext.triggerAddeds.Where(m => m.Id == triggerAddedId).ToList();
+            return _triggerDbContext.triggerAddeds.Where(m => m.Id == userId).ToList();
         }
     }
 }

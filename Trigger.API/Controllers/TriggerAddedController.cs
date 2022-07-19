@@ -42,9 +42,9 @@ namespace Trigger.API.Controllers
         //}
         //[HttpPost("List")]
         //[Authorize]
-        public TableAddedListViewModel List(Guid id)
+        public TableAddedListViewModel List()
         {
-            var triggerAddedModelDtos = _triggerAddedService.List(id);
+            var triggerAddedModelDtos = _triggerAddedService.List(_userContext.UserId);
             return new TableAddedListViewModel()
             {
                 List = triggerAddedModelDtos.Select(m => m.Adapt<TableAddedListViewRowModel>()).ToList()
