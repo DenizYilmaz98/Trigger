@@ -40,8 +40,8 @@ namespace Trigger.API.Controllers
         //    var trAdded = _triggerAddedService.Get(id);
         //    return trAdded.Adapt<GetTriggerAddedViewModel>();
         //}
-        //[HttpPost("List")]
-        //[Authorize]
+        [HttpPost("List")]
+        [Authorize]
         public TableAddedListViewModel List()
         {
             var triggerAddedModelDtos = _triggerAddedService.List(_userContext.UserId);

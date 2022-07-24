@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="~/admin/assets/css/style.css">
     <link id="cus-style" rel="stylesheet" href="~/admin/assets/css/style-primary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/admin/assets/js/plugins/datatables/datatables.min.js"></script>
     <script>
         var ApiUrl = '@Startup.Settings.ApiUrl'
     </script>
@@ -75,7 +75,7 @@
             </nav>
         </div>
     </div>
-       
+
             <div class="col-9 contentarea">
                 @RenderBody()
             </div>

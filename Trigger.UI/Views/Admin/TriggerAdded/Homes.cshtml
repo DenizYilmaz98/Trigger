@@ -34,6 +34,17 @@
         <button onclick="javascript:save()">Triggerla</button>
     </div>
 </div>
+
+<div>
+    <table id="dataArea" class="display" width="100%" data-page-length='25'>
+        <thead>
+            <tr>
+                <th>Gönderi</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
 <script>
     var Id = '@Model';
     function save() {
@@ -61,49 +72,35 @@
 
             });
     }
-
-    </script>
-<div>
-    <table id="dataArea" class="display" width="100%" data-page-length='25'>
-        <thead>
-            <tr>
-                <th>Gönderi</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
-</div>
-    <script>
-
-    function init() {
-        var token = localStorage.getItem("token");
-        fetch(ApiUrl + 'triggeradded/list', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-
-
-                $('#dataArea').DataTable({
-                    data: data.list,
-                    columns: [
-                        { data: 'comment' },
-
-                    ],
-                });
+        function init() {
+            var token = localStorage.getItem("token");
+            fetch(ApiUrl + 'triggeradded/list', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
 
-    }
-    $(document).ready(function () {
-        init();
-    })
+
+                    $('#dataArea').DataTable({
+                        data: data.list,
+                        columns: [
+                            { data: 'comment' },
+                          
+                        ],
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+        }
+        $(document).ready(function () {
+            init();
+        })
     //$(document).ready(function () {
     //    if (Id != "") {
     //        var token = localStorage.getItem("token");
