@@ -33,31 +33,31 @@ namespace Trigger.API.Controllers
             var triggerAddedId = _triggerAddedService.Save(model);
             return new TriggerAddedViewModel { TriggerAddedId = triggerAddedId };
         }
-        //[HttpPost("Get")]
-        //[Authorize]
-        //public GetTriggerAddedViewModel Get(Guid id)
-        //{
-        //    var trAdded = _triggerAddedService.Get(id);
-        //    return trAdded.Adapt<GetTriggerAddedViewModel>();
-        //}
+        [HttpPost("Get")]
+        [Authorize]
+        public GetTriggerAddedViewModel Get(Guid id)
+        {
+            var trAdded = _triggerAddedService.Get(id);
+            return trAdded.Adapt<GetTriggerAddedViewModel>();
+        }
         [HttpPost("List")]
         [Authorize]
-        public TableAddedListViewModel List()
+        public TriggerViewListModel List()
         {
-            var triggerAddedModelDtos = _triggerAddedService.List(_userContext.UserId);
-            return new TableAddedListViewModel()
+            var triggerresponsemodel = _triggerAddedService.List(_userContext.ProfileId);
+            return new TriggerViewListModel()
             {
-                List = triggerAddedModelDtos.Select(m => m.Adapt<TableAddedListViewRowModel>()).ToList()
+                List = triggerresponsemodel.Select(m => m.Adapt<TriggerAddedListViewModel>()).ToList()
 
             };
 
         }
 
-        //[HttpDelete]
-        //public void Delete(Guid userId)
-        //{
-        //    _triggerAddedService.Delete(userId);
-        //}
+        [HttpDelete]
+        public void Delete(Guid userId)
+        {
+            _triggerAddedService.Delete(userId);
+        }
 
     }
 }

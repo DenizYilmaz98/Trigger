@@ -11,7 +11,7 @@ namespace Trigger.Data.Abstract
     {
         void Add(TriggerAdded triggerAdded);
         void Delete(Guid userId);
-        //TriggerAdded Get(Guid triggerAddedId);
+        TriggerAdded Get(Guid triggerAddedId);
         List<TriggerAdded> List(Guid userId);
     }
 }

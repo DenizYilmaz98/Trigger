@@ -56,6 +56,7 @@ namespace Trigger.API.Middlewares
 
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(options.Value.TokenKey);
+
                 try
                 {
                     tokenHandler.ValidateToken(token.Value, new TokenValidationParameters

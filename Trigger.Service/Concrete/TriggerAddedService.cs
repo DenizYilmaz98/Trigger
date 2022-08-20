@@ -25,11 +25,11 @@ namespace Trigger.Service.Concrete
             _triggerAddedRepository.Delete(userId);
         }
 
-        //public GetTriggerAddedResponseDto Get(Guid tableAddedId)
-        //{
-        //    var model = _triggerAddedRepository.Get(tableAddedId);
-        //    return model.Adapt<GetTriggerAddedResponseDto>();
-        //}
+        public GetTriggerAddedResponseDto Get(Guid tableAddedId)
+        {
+            var model = _triggerAddedRepository.Get(tableAddedId);
+            return model.Adapt<GetTriggerAddedResponseDto>();
+        }
 
         public List<ListTriggerAddedModelDto> List(Guid triggerAddedId)
         {

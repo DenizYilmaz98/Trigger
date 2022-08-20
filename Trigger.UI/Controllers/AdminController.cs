@@ -13,6 +13,7 @@ namespace Trigger.UI.Controllers
     {
         private readonly IOptions<AppSettings> _options;
 
+
         public AdminController(IOptions<AppSettings>options)
         {
             _options = options;
@@ -34,8 +35,19 @@ namespace Trigger.UI.Controllers
         [HttpGet("TriggerAdded")]
         public IActionResult TriggerAdded()
         {
-            return View("~/Views/Admin/TriggerAdded/Homes.cshtml");
+            return View("~/Views/Admin/TriggerAdded/List.cshtml");
         }
+        [HttpGet("TriggerAdded/Detail")]
+        public IActionResult TriggerAddedDetail(Guid id)
+        {
+            return View("~/Views/Admin/TriggerAdded/Detail.cshtml",id);
+        }
+        [HttpGet("TriggerAdded/Add")]
+        public IActionResult TriggerAddeddAdd()
+        {
+            return View("~/Views/Admin/TriggerAdded/Detail.cshtml");
+        }
+        
 
 
     }

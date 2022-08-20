@@ -12,7 +12,7 @@
         color: #ffff;
     }
 </style>
-<div class="table">
+<div >
 <table id="dataArea" class="display" width="50%" data-page-length='25'>
     <thead>
         <tr>
@@ -44,7 +44,12 @@
                         { data: 'firstName' },
                         { data: 'lastName' },
                         { data: 'email' },
-                        
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return "<a href='/Admin/User/Detail?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
+                            }
+                        }
                        
                     ],
                 });

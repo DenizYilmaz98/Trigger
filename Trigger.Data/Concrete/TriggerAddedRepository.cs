@@ -30,10 +30,10 @@ namespace Trigger.Data.Concrete
             _triggerDbContext.SaveChanges();
         }
 
-        //public TriggerAdded Get(Guid triggerAddedId)
-        //{
-        //    return _triggerDbContext.triggerAddeds.Where(m=>m.Id== triggerAddedId).FirstOrDefault();
-        //}
+        public TriggerAdded Get(Guid triggerAddedId)
+        {
+            return _triggerDbContext.triggerAddeds.Where(m => m.Id == triggerAddedId).FirstOrDefault();
+        }
 
         public List<TriggerAdded> List(Guid userId)
         {

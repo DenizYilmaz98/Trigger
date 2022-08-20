@@ -8,6 +8,6 @@ namespace Trigger.API.Model.TriggerAddedModel
     public class GetTriggerAddedViewModel
     {
         public Guid Id { get; set; }
-        public string comment { get; set; }
+        public string Comment { get; set; }
     }
 }

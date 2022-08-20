@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "datatable@2.0.2",
+      "destination": "wwwroot/datatable/"
+    },
+    {
+      "library": "bootstrap@5.2.0",
+      "destination": "wwwroot/bootstrap/"
+    },
+    {
+      "library": "jquery@3.6.0",
+      "destination": "wwwroot/jquery/"
+    },
+    {
+      "library": "jspdf@2.5.1",
+      "destination": "wwwroot/jspdf/"
+    }
+  ]
+}

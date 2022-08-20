@@ -11,7 +11,7 @@ namespace Trigger.Service.Abstract
     public interface ITriggerAddedService
     {
         public Guid Save(TriggerAddModelDto triggerAddModelDto);
-        //GetTriggerAddedResponseDto Get(Guid tableAddedId);
+        GetTriggerAddedResponseDto Get(Guid tableAddedId);
         void Delete(Guid userId);
         List<ListTriggerAddedModelDto> List(Guid userId);
             

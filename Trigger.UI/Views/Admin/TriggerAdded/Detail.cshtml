@@ -1,0 +1,68 @@
+﻿@model Guid;
+
+@{
+    Layout = "~/Views/Admin/Shared/_Layout.cshtml";
+  }
+
+<div class="login-register-form">
+    <div class="col-12 mb-20">
+        <input class="form-control" placeholder="Gönderi" id="comment" />
+    </div>
+    <div class="col-12 mt-10">
+        <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
+    </div>
+
+
+  </div>
+    <script>
+
+    var Id = '@Model';
+    function save() {
+        comment=$("#comment").val()
+        const data = { comment: comment, id: Id }
+        var token = localStorage.getItem("token");
+
+        fetch(ApiUrl + 'triggeradded/save', {
+            method: 'POST', // or 'PUT
+            headers: {
+                'Content-Type': 'application/json',
+                "token": token
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {  document.location.href = "/Admin/TriggerAdded";
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+
+            });
+    }
+    $(document).ready(function () {
+        if (Id != "") {
+            var token = localStorage.getItem("token");
+            fetch(ApiUrl + 'triggeradded/get?id='+Id, {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+
+                        $("#comment").val(data.comment);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    })
+
+
+
+
+    </script>
