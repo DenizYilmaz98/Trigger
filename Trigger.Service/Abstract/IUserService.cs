@@ -9,6 +9,7 @@ namespace Trigger.Service.Abstract
 {
    public interface IUserService
     {
+        UserDetailDto Detail(Guid userId); 
        public string Register(RegisterDto registerDto);
         public LoginResponseModel Login(LoginDto loginDto);
         public Guid Save(SaveRegisterDto saveRegisterDto);

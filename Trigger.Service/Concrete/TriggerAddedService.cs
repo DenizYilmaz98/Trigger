@@ -31,9 +31,9 @@ namespace Trigger.Service.Concrete
             return model.Adapt<GetTriggerAddedResponseDto>();
         }
 
-        public List<ListTriggerAddedModelDto> List(Guid triggerAddedId)
+        public List<ListTriggerAddedModelDto> List(Guid userId)
         {
-            List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List(triggerAddedId);
+            List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List(userId);
             return triggerAddeds.Select(m => m.Adapt<ListTriggerAddedModelDto>()).ToList();
         }
 

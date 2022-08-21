@@ -44,7 +44,7 @@ namespace Trigger.API.Controllers
         [Authorize]
         public TriggerViewListModel List()
         {
-            var triggerresponsemodel = _triggerAddedService.List(_userContext.ProfileId);
+            var triggerresponsemodel = _triggerAddedService.List(_userContext.UserId);
             return new TriggerViewListModel()
             {
                 List = triggerresponsemodel.Select(m => m.Adapt<TriggerAddedListViewModel>()).ToList()

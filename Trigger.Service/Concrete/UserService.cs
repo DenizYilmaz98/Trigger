@@ -28,6 +28,17 @@ namespace Trigger.Service.Concrete
             _options = options;
         }
 
+        public UserDetailDto Detail(Guid userId)
+        {
+            var detail = _userRepository.GetById(userId);
+            return new UserDetailDto()
+            {
+                UserId = detail.Id,
+                FirstName=detail.FirstName,
+                LastName=detail.LastName
+            };
+        }
+
         public GetUserResponseDto Get( Guid id)
         {
            var user = _userRepository.Get( id);

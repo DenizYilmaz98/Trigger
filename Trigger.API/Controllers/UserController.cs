@@ -66,5 +66,17 @@ namespace Trigger.API.Controllers
             var user = _userService.Get(id);
             return user.Adapt < GetUserViewModel> ();
         }
+        [HttpPost("GetUser")]
+        [Authorize]
+        public UserDetailViewModel Detail()
+        {
+            var detail = _userService.Detail(_userContext.UserId);
+            return new UserDetailViewModel()
+            {
+                Id=detail.UserId,
+                FirstName = detail.FirstName,
+                LastName=detail.LastName
+            };
+        }
     } 
 }
