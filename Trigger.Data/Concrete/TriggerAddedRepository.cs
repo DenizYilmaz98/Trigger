@@ -23,16 +23,16 @@ namespace Trigger.Data.Concrete
 
         }
 
-        public void Delete(Guid triggeraddedId)
+        public void Delete(Guid userId)
         {
-            var triggerAddedEntity = _triggerDbContext.triggerAddeds.Where(m => m.Id == triggeraddedId).FirstOrDefault();
-            _triggerDbContext.Remove(triggeraddedId);
+            var triggerAddedEntity = _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).FirstOrDefault();
+            _triggerDbContext.Remove(userId);
             _triggerDbContext.SaveChanges();
         }
 
-        public TriggerAdded Get(Guid triggerAddedId)
+        public TriggerAdded Get(Guid userId)
         {
-            return _triggerDbContext.triggerAddeds.Where(m => m.Id == triggerAddedId).FirstOrDefault();
+            return _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).FirstOrDefault();
         }
 
         public List<TriggerAdded> List(Guid userId)
