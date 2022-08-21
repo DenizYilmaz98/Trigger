@@ -25,9 +25,9 @@ namespace Trigger.Service.Concrete
             _triggerAddedRepository.Delete(userId);
         }
 
-        public GetTriggerAddedResponseDto Get(Guid tableAddedId)
+        public GetTriggerAddedResponseDto Get(Guid id)
         {
-            var model = _triggerAddedRepository.Get(tableAddedId);
+            var model = _triggerAddedRepository.Get(id);
             return model.Adapt<GetTriggerAddedResponseDto>();
         }
 
