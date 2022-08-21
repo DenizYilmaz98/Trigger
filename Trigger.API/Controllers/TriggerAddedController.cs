@@ -30,6 +30,7 @@ namespace Trigger.API.Controllers
         public TriggerAddedViewModel Save(TriggerAddedInputModel triggerAddedInputModel)
         {
             var model = triggerAddedInputModel.Adapt<TriggerAddModelDto>();
+            model.UserId = _userContext.UserId;
             var triggerAddedId = _triggerAddedService.Save(model);
             return new TriggerAddedViewModel { TriggerAddedId = triggerAddedId };
         }

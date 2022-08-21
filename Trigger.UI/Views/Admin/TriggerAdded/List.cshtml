@@ -2,6 +2,12 @@
     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
 
 }
+<style>
+
+   th{
+        background-color:#874a4a;
+    }
+</style>
 <a class="btn btn-success" href="/Admin/TriggerAdded/Add">Ekle</a>
 <div>
     <table id="dataArea" class="display" width="100%" data-page-length='25'>
@@ -34,7 +40,7 @@
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a href='/Admin/TriggerAdded/Detail?id=" + row.id + "'>Detay</a> / <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
+                                return "<a class ='tablecard' href='/Admin/TriggerAdded/Detail?id=" + row.id + "'>Detay</a> </br> <==> </br>/ <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
                             }
                         }
                     ],

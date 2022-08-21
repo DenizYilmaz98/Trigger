@@ -34,16 +34,21 @@ namespace Trigger.Service.Concrete
         public List<ListTriggerAddedModelDto> List(Guid userId)
         {
             List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List(userId);
+
             return triggerAddeds.Select(m => m.Adapt<ListTriggerAddedModelDto>()).ToList();
         }
 
         public Guid Save(TriggerAddModelDto triggerAddModelDto)
         {
             var triggerAdded = new TriggerAdded();
+            triggerAdded.UserId = triggerAddModelDto.UserId;
             triggerAdded.Comment = triggerAddModelDto.comment;
+            
             if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
+                triggerAdded.Comment = triggerAddModelDto.comment;
+                triggerAdded.Id = triggerAddModelDto.Id;
                 _triggerAddedRepository.Insert(triggerAdded);
                 
             }
