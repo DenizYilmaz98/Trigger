@@ -37,7 +37,7 @@ namespace Trigger.Data.Concrete
 
         public List<TriggerAdded> List(Guid userId)
         {
-            return _triggerDbContext.triggerAddeds.Where(m => m.Id == userId).ToList();
+            return _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).ToList();
         }
     }
 }

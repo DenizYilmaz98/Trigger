@@ -10,7 +10,7 @@ namespace Trigger.Data.Model
     [Table("TriggerAdded")]
     public class TriggerAdded:BaseEntity
     {
-
+        public Guid UserId { get; set; }
         public string Comment { get; set; }
 
     }
