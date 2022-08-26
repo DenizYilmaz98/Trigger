@@ -29,6 +29,7 @@ namespace Trigger.API.Controllers
         [Authorize]
         public TriggerAddedViewModel Save(TriggerAddedInputModel triggerAddedInputModel)
         {
+            
             var model = triggerAddedInputModel.Adapt<TriggerAddModelDto>();
             model.UserId = _userContext.UserId;
             var triggerAddedId = _triggerAddedService.Save(model);
@@ -59,6 +60,6 @@ namespace Trigger.API.Controllers
         {
             _triggerAddedService.Delete(userId);
         }
-
+        
     }
 }

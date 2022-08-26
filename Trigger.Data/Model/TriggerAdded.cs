@@ -12,6 +12,7 @@ namespace Trigger.Data.Model
     {
         public Guid UserId { get; set; }
         public string Comment { get; set; }
+        public string İmage { get; set; }
 
     }
 }

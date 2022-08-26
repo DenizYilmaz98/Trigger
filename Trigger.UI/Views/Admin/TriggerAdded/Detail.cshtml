@@ -8,18 +8,21 @@
     <div class="col-12 mb-20">
         <input class="form-control" placeholder="Gönderi" id="comment" />
     </div>
+    <div class="col-12 mb-20">
+        <input type="file" class="form-control" placeholder="Gönderi" id="image"accept="image/png,image/jpg" />
+    </div>
     <div class="col-12 mt-10">
         <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
     </div>
-
-
-  </div>
+</div>
     <script>
 
     var Id = '@Model';
     function save() {
-        comment=$("#comment").val()
-        const data = { comment: comment, id: Id }
+        comment = $("#comment").val()
+        image = $("#image").val()
+        const data = { comment: comment, image: image, id: Id }
+       
         var token = localStorage.getItem("token");
 
         fetch(ApiUrl + 'triggeradded/save', {
@@ -38,7 +41,8 @@
                 console.error('Error:', error);
 
             });
-    }
+        }
+       
     $(document).ready(function () {
         if (Id != "") {
             var token = localStorage.getItem("token");
@@ -54,6 +58,7 @@
                     if (data) {
 
                         $("#comment").val(data.comment);
+                        $("#image").val(data.image);
                     }
                 })
                 .catch((error) => {
@@ -61,8 +66,4 @@
                 });
         }
     })
-
-
-
-
     </script>

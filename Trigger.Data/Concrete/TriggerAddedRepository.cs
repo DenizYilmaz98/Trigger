@@ -23,6 +23,12 @@ namespace Trigger.Data.Concrete
 
         }
 
+        public void AddImage(TriggerAdded triggerAdded)
+        {
+            _triggerDbContext.Add("~/Image");
+            _triggerDbContext.SaveChanges();
+                }
+
         public void Delete(Guid userId)
         {
             var triggerAddedEntity = _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).FirstOrDefault();

@@ -3,8 +3,8 @@
 
 }
 <style>
-
-   th{
+th
+   {
         background-color:#874a4a;
     }
 </style>
@@ -12,10 +12,13 @@
 <div>
     <table id="dataArea" class="display" width="100%" data-page-length='25'>
         <thead>
+
             <tr>
                 <th>Gönderi</th>
                 <th></th>
-           </tr>
+                <th>Görsel</th>
+                <th></th>
+            </tr>
         </thead>
     </table>
 </div>
@@ -36,6 +39,7 @@
                     data: data.list,
                     columns: [
                         { data: 'comment' },
+                        { data:'image' },
 
                         {
                             data: null,

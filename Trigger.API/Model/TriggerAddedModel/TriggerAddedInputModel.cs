@@ -9,5 +9,6 @@ namespace Trigger.API.Model.TriggerAddedModel
     {
         public Guid Id { get; set; }
         public string comment { get; set; }
+        public string image { get; set; }
     }
 }

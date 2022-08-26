@@ -43,11 +43,13 @@ namespace Trigger.Service.Concrete
             var triggerAdded = new TriggerAdded();
             triggerAdded.UserId = triggerAddModelDto.UserId;
             triggerAdded.Comment = triggerAddModelDto.comment;
+            triggerAdded.İmage = triggerAddModelDto.image;
             
             if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
                 triggerAdded.Comment = triggerAddModelDto.comment;
+                triggerAdded.İmage = triggerAddModelDto.image;
                 triggerAdded.Id = triggerAddModelDto.Id;
                 _triggerAddedRepository.Insert(triggerAdded);
                 

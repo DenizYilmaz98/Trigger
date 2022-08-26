@@ -18,9 +18,10 @@ namespace Trigger.UI.Controllers
         {
             _options = options;
         }
-        public IActionResult Index()
+        [HttpGet("Home")]
+        public IActionResult Home()
         {
-            return View();
+            return View("~/Views/Admin/Home/Index.cshtml");
         }
         [HttpGet("User")]
         public IActionResult User()

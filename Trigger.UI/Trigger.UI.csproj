@@ -231,4 +231,8 @@
     <ProjectReference Include="..\TriggerCore\TriggerCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
+
 </Project>
