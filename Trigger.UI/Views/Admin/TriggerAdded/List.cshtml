@@ -23,6 +23,24 @@ th
     </table>
 </div>
 <script>
+     function Delete(id) {
+        var token = localStorage.getItem("token");
+        fetch(ApiUrl + 'triggeradded/delete?id=' + id, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        })
+            .then(data => {
+                document.location.reload();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+   
     function init() {
         var token = localStorage.getItem("token");
         fetch(ApiUrl + 'triggeradded/list', {
@@ -39,7 +57,6 @@ th
                     data: data.list,
                     columns: [
                         { data: 'comment' },
-                        { data:'image' },
 
                         {
                             data: null,
@@ -55,23 +72,6 @@ th
             });
 
     }
-    function Delete(id) {
-        var token = localStorage.getItem("token");
-        fetch(ApiUrl+'triggeradded/delete?id=' + id, {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        })
-            .then(data => {
-                document.location.reload();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
-   
     $(document).ready(function () {
         init();
     })

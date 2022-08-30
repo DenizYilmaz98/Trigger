@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
 }
 
@@ -31,3 +31,17 @@
         </tr>
     </tbody>
 </table>
+<button onclick="zamanla();">Zamanla</button>
+<button onclick="iptal();">İptal</button>
+<script>
+  var zaman;
+  function zamanla() {
+    zaman = setTimeout(function() {
+      alert("5 sn geçti");
+    }, 5000);
+  }
+
+  function iptal() {
+    clearTimeout(zaman);
+  }
+</script>

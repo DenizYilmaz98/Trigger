@@ -10,8 +10,7 @@ namespace Trigger.Data.Abstract
     public interface ITriggerAddedRepository:ITriggerDbRepository<TriggerAdded>
     {
         void Add(TriggerAdded triggerAdded);
-        void AddImage(TriggerAdded triggerAdded);
-        void Delete(Guid userId);
+        public void Delete(Guid triggeraddedId);
         TriggerAdded Get(Guid triggerAddedId);
         List<TriggerAdded> List(Guid userId);
     }

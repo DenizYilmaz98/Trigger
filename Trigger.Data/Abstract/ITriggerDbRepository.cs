@@ -12,7 +12,7 @@ namespace Trigger.Data.Abstract
         public void Insert(TEntity entity);
         public void Update(TEntity entity);
         public void Delete(TEntity entity);
-        public void Delete(Guid Id);
+        public void Delete(Guid id);
         public TEntity GetById(Guid id);
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null);
 

@@ -53,7 +53,7 @@ namespace Trigger.Data.Concrete
             _triggerDbContext.Set<TEntity>().Remove(entity);
             _triggerDbContext.SaveChanges();
         }
-
+       
         public void Delete(Guid id)
         {
             var entity = _triggerDbContext.Set<TEntity>().Find(id);

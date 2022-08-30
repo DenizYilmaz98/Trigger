@@ -20,9 +20,9 @@ namespace Trigger.Service.Concrete
             _triggerAddedRepository = triggerAddedRepository;
         }
 
-        public void Delete(Guid userId)
+        public void Delete(Guid tableAddedId)
         {
-            _triggerAddedRepository.Delete(userId);
+            _triggerAddedRepository.Delete(tableAddedId);
         }
 
         public GetTriggerAddedResponseDto Get(Guid id)
@@ -43,13 +43,11 @@ namespace Trigger.Service.Concrete
             var triggerAdded = new TriggerAdded();
             triggerAdded.UserId = triggerAddModelDto.UserId;
             triggerAdded.Comment = triggerAddModelDto.comment;
-            triggerAdded.İmage = triggerAddModelDto.image;
             
             if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
                 triggerAdded.Comment = triggerAddModelDto.comment;
-                triggerAdded.İmage = triggerAddModelDto.image;
                 triggerAdded.Id = triggerAddModelDto.Id;
                 _triggerAddedRepository.Insert(triggerAdded);
                 

@@ -22,17 +22,10 @@ namespace Trigger.Data.Concrete
             _triggerDbContext.SaveChanges();
 
         }
-
-        public void AddImage(TriggerAdded triggerAdded)
+        public void Delete(Guid triggeraddedId)
         {
-            _triggerDbContext.Add("~/Image");
-            _triggerDbContext.SaveChanges();
-                }
-
-        public void Delete(Guid userId)
-        {
-            var triggerAddedEntity = _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).FirstOrDefault();
-            _triggerDbContext.Remove(userId);
+            var triggerAddedEntity = _triggerDbContext.triggerAddeds.Where(m => m.Id == triggeraddedId).FirstOrDefault();
+            _triggerDbContext.triggerAddeds.Remove(triggerAddedEntity);
             _triggerDbContext.SaveChanges();
         }
 

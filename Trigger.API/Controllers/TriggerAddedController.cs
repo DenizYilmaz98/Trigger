@@ -55,10 +55,11 @@ namespace Trigger.API.Controllers
 
         }
 
-        [HttpDelete]
-        public void Delete(Guid userId)
+        [HttpPost("Delete")]
+        [Authorize]
+        public void Delete(Guid id)
         {
-            _triggerAddedService.Delete(userId);
+            _triggerAddedService.Delete(id);
         }
         
     }
