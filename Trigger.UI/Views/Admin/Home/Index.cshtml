@@ -18,6 +18,20 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+    .timer{
+        padding:20px;
+        display:inline-block;
+        border:2px black solid;
+        border-radius:20px;
+    }
+        .timer button {
+            border: 2px black solid;
+            border-radius: 20px;
+        }
+            .timer button p {
+            color:burlywood;
+            }
+
 </style>
 <table>
     <thead>
@@ -31,17 +45,23 @@
         </tr>
     </tbody>
 </table>
+<br />
+<br />
+<div class="timer">
+    <p>Okuma hızını ölçmek istiyorsan butona bas. </p>
+
 <button onclick="zamanla();">Zamanla</button>
 <button onclick="iptal();">İptal</button>
+</div>
 <script>
-  var zaman;
-  function zamanla() {
-    zaman = setTimeout(function() {
-      alert("5 sn geçti");
-    }, 5000);
-  }
+    var zaman;
+    function zamanla() {
+        zaman = setTimeout(function () {
+            alert("10 sn geçti");
+        }, 10000);
+    }
 
-  function iptal() {
-    clearTimeout(zaman);
-  }
+    function iptal() {
+        clearTimeout(zaman);
+    }
 </script>
