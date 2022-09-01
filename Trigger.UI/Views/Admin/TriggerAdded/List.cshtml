@@ -3,9 +3,16 @@
 
 }
 <style>
-th
+    table a
    {
-        background-color:#874a4a;
+        padding:5px;
+        color:white;
+        border-radius:10px;
+        background-color:#745b5b;
+
+    }
+    th{
+        margin-left:20px;
     }
 </style>
 <a class="btn btn-success" href="/Admin/TriggerAdded/Add">Ekle</a>
@@ -15,6 +22,9 @@ th
 
             <tr>
                 <th>Gönderi</th>
+                <th></th>
+                <th></th>
+               
                 <th></th>
                 <th>Görsel</th>
                 <th></th>
@@ -61,7 +71,7 @@ th
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a class ='tablecard' href='/Admin/TriggerAdded/Detail?id=" + row.id + "'>Detay</a> </br> <==> </br>/ <a href=\"javascript:Delete('" + row.id + "')\">Sil</a>";
+                                return "<a class ='tablecard' href='/Admin/TriggerAdded/Detail?id=" + row.id + "'>Düzenle</a> </br> <==> </br>/ <a href=\"javascript:Delete('" + row.id + "')\">Sil</a> </br><==> </br><a href='/Admin/TriggerAdded/Detail?id=" + row.id + "'>Detay</a> </br>  ";
                             }
                         }
                     ],
