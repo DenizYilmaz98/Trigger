@@ -9,5 +9,7 @@ namespace Trigger.Data.Abstract
 {
    public interface IDailyCommentsRepository:ITriggerDbRepository<DailyComments>
     {
+        void Save(DailyComments dailyComments);
+        List<DailyComments>List(Guid userId);
     }
 }
