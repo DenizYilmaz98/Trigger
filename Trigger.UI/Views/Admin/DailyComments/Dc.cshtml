@@ -1,0 +1,52 @@
+﻿@model Guid;
+ @{
+     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
+}
+<style>
+    .saveform{
+       padding:10px;
+        background-color:burlywood;
+        border:2px solid #5b3b07;
+        border-radius:5px;
+        margin-right:440px;
+    }
+    
+</style>
+    <div class="saveform">
+        <div>
+            <input class="form-control" type="text" id="Title" placeholder="Başlığı Yazınız"/>
+        </div>
+        <br />
+        <div>
+            <input class="form-control" type="text" id="DailyComments" placeholder="Konuyu Yazınız"/>
+        </div>
+        <br />
+        <button class="btn btn-danger" onclick="javascript:save()">Kaydet</button>
+    </div>
+    <script>
+        var Id = '@Model';
+        function save() {
+             title = $("#title").val();
+             dailycomment = $("#dailycomment").val();
+            const data = { title: title, dailycomment: dailycomment, id: Id }
+
+            var token = localStorage.getItem("token");
+
+             fetch(ApiUrl + 'dailycomments/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "token": token
+                },
+                body: JSON.stringify(data), 
+              })
+                .then(response => response.json())
+                .then(data => {
+                    document.location.href = "/Admin/DailyComments";
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>

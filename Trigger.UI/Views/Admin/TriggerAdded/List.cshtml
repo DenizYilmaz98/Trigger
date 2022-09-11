@@ -21,13 +21,15 @@
         <thead>
 
             <tr>
-                <th>Gönderi</th>
-                <th></th>
-                <th></th>
-               
-                <th></th>
-                <th>Görsel</th>
-                <th></th>
+                <th>İsim</th>
+                <th>Soy İsim</th>
+                <th>Doğum Tarihi</th>
+                <th>Okul İsmi</th>
+                <th>Bölüm</th>
+                <th>Başlangıç Tarihi</th>
+                <th>Bitiş Tarihi</th>
+                <th>Yetenekler</th>
+                <th>#</th>
             </tr>
         </thead>
     </table>
@@ -66,7 +68,14 @@
                 $('#dataArea').DataTable({
                     data: data.list,
                     columns: [
-                        { data: 'comment' },
+                        { data: 'firstname' },
+                        { data: 'lastname' },
+                        { data: 'birthdate' },
+                        { data: 'schoolname' },
+                        { data: 'schoolstudyname' },
+                        { data: 'schoolstarttime' },
+                        { data: 'schoolfinishtime' },
+                        { data: 'abilities' },
 
                         {
                             data: null,

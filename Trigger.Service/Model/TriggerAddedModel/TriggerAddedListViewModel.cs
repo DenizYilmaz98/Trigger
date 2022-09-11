@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Trigger.Data.Model
+namespace Trigger.Service.Model.TriggerAddedModel
 {
-    [Table("TriggerAdded")]
-    public class TriggerAdded:BaseEntity
+    public class TriggerAddedListViewModel
     {
-             public Guid UserId { get; set; }
-             public string FirstName { get; set; }
-      
+        public List<TriggerAddedListViewRowModel> List { get; set; }
+        public class TriggerAddedListViewRowModel
+        {
+            public Guid Id { get; set; }
+            public string FirstName { get; set; }
+
             public string LastName { get; set; }
 
-    
+
             public DateTime BirthDate { get; set; }
 
             public string SchoolName { get; set; }
 
             public string SchoolStudyName { get; set; }
 
-    
+
             public DateTime SchoolStartTime { get; set; }
             public DateTime SchoolFinishTime { get; set; }
 
 
             public string Abilities { get; set; }
-       
+
+        }
 
     }
 }

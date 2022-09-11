@@ -9,7 +9,7 @@ using Trigger.API.Model.TriggerAddedModel;
 using Trigger.API.Model.UserModel;
 using Trigger.Service.Abstract;
 using Trigger.Service.Model.TriggerAddedModel;
-using static Trigger.Service.Model.TriggerAddedModel.TableAddedListViewModel;
+using static Trigger.Service.Model.TriggerAddedModel.TriggerAddedListViewModel;
 
 namespace Trigger.API.Controllers
 {
@@ -44,12 +44,12 @@ namespace Trigger.API.Controllers
         }
         [HttpPost("List")]
         [Authorize]
-        public TriggerViewListModel List()
+        public TriggerAddedViewListModel List()
         {
             var triggermodel = _triggerAddedService.List(_userContext.UserId);
-            return new TriggerViewListModel()
+            return new TriggerAddedViewListModel()
             {
-                List = triggermodel.Select(m => m.Adapt<TriggerAddedListViewModel>()).ToList()
+                List = triggermodel.Select(m => m.Adapt<TriggerAddedListModel>()).ToList()
 
             };
 

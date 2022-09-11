@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Trigger.Service.Model.TriggerAddedModel
+
+namespace Trigger.API.Model.TriggerAddedModel
 {
-    public class TriggerAddModelDto
+    public class TriggerAddedViewListModel
     {
-        public  Guid Id { get; set; }
-        public Guid UserId { get; set; }
+       public List<TriggerAddedListModel> List { get; set; }
+    }
+    public class TriggerAddedListModel
+        {
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
 
         public DateTime BirthDate { get; set; }
 
@@ -21,11 +23,11 @@ namespace Trigger.Service.Model.TriggerAddedModel
 
         public string SchoolStudyName { get; set; }
 
-
         public DateTime SchoolStartTime { get; set; }
+        
         public DateTime SchoolFinishTime { get; set; }
-
-
+        
         public string Abilities { get; set; }
     }
+
 }

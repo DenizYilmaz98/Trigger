@@ -48,8 +48,15 @@ namespace Trigger.UI.Controllers
         {
             return View("~/Views/Admin/TriggerAdded/Detail.cshtml");
         }
-        
-
-
+        [HttpGet("DailyComments")]
+        public IActionResult DailyComments()
+        {
+            return View("~/Views/Admin/DailyComments/Dc.cshtml");
+        }
+        [HttpGet("DailyComments/Add")]
+        public IActionResult DailyCommentsAdd(Guid id)
+        {
+            return View("~/Views/Admin/DailyComments/Dc.cshtml",id);
+        }
     }
 }

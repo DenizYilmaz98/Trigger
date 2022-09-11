@@ -45,10 +45,12 @@ namespace Trigger.API
             services.AddScoped<UserContext>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITriggerAddedService, TriggerAddedService>();
-
+            services.AddScoped<IDailyCommentsService, DailyCommentsService>();
+            
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITriggerAddedRepository, TriggerAddedRepository>();
+            services.AddScoped<IDailyCommentsRepository,DailyCommentsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -2,29 +2,28 @@
 
 @{
     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
-  }
+}
 
-<div class="login-register-form">
-    <div class="col-12 mb-20">
-        <input class="form-control" placeholder="Gönderi" id="comment" />
-    </div>
-    @*<div class="col-12 mb-20">
-        <input type="file" class="form-control" placeholder="Gönderi" id="image"accept="image/png,image/jpg" />
-    </div>*@
-    <div class="col-12 mt-10">
-        <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
-    </div>
-</div>
-    <script>
 
-        var Id = '@Model';
+<script>
+      var Id = '@Model';
 
     function save() {
-        comment = $("#comment").val()
-        //image = $("#image").val()
-        const data = { comment: comment,  id: Id }
-       
-        var token = localStorage.getItem("token");
+
+            var firstname = $("#firstname").val();
+            var lastname = $("#lastname").val();
+            var birthdate = $("#birthdate").val();
+            var schoolname = $("#schoolname").val();
+            var schoolstudyname = $("#schoolstudyname").val();
+            var schoolstarttime = $("#schoolstarttime").val();
+            var schoolfinishtime = $("#schoolfinishtime").val();
+            var abilities = $("#abilities").val();
+            const data = {
+                firstname: firstname, lastname: lastname, birthdate: birthdate, schoolname: schoolname, schoolstudyname: schoolstudyname, schoolstarttime: schoolstarttime
+                , schoolfinishtime: schoolfinishtime, abilities: abilities,id:Id
+            };
+
+            var token = localStorage.getItem("token");
 
         fetch(ApiUrl + 'triggeradded/save', {
             method: 'POST', // or 'PUT
@@ -35,19 +34,20 @@
             body: JSON.stringify(data),
         })
             .then(response => response.json())
-            .then(data => {  document.location.href = "/Admin/TriggerAdded";
+            .then(data => {
+                if (data) alert("kayıt başarılı")
+                document.location.href = "/Admin/TriggerAdded";
 
             })
             .catch((error) => {
                 console.error('Error:', error);
 
             });
-        }
-       
+    }
     $(document).ready(function () {
         if (Id != "") {
             var token = localStorage.getItem("token");
-            fetch(ApiUrl + 'triggeradded/get?id='+Id, {
+            fetch(ApiUrl + 'triggeradded/get?id=' + Id, {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,8 +58,14 @@
                 .then(data => {
                     if (data) {
 
-                        $("#comment").val(data.comment);
-                    //    $("#image").val(data.image);
+                        $("#firstname").val(data.firstname);
+                        $("#lastname").val(data.lastname);
+                        $("#birthdate").val(data.birthdate);
+                        $("#schoolname").val(data.schoolname);
+                        $("#schoolstudyname").val(data.schoolstudyname);
+                        $("#schoolstarttime").val(data.schoolstarttime);
+                        $("#schoolfinishtime").val(data.schoolfinishtime);
+                        $("#abilities").val(data.abilities);
                     }
                 })
                 .catch((error) => {
@@ -67,4 +73,26 @@
                 });
         }
     })
-    </script>
+
+</script>
+<div class="login-register-form">
+    <div id="cont" class="row">
+        <input class="form-control" type="text" id="firstname" placeholder="Adınızı giriniz">
+        
+        <input class="form-control" type="text" id="lastname" placeholder="Soy adınızı giriniz">
+       
+        <input class="form-control" type="datetime" id="birthdate" placeholder="Doğum tarihini giriniz">
+        
+        <input class="form-control" type="text" id="schoolname" placeholder="Okul adını Giriniz">
+        
+        <input class="form-control" type="text" id="schoolstudyname" placeholder="Okul bölümü giriniz">
+        
+        <input class="form-control" type="datetime" id="schoolstarttime" placeholder="Okul başlangıç tarihini giriniz">
+       
+        <input class="form-control" type="datetime" id="schoolfinishtime" placeholder="Okul bitiş tarihini giriniz">
+        
+        <input class="form-control" type="text" id="abilities" placeholder="Yeteneklerinizi giriniz">
+      
+        <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
+    </div>
+</div>

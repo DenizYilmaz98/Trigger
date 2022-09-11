@@ -42,13 +42,24 @@ namespace Trigger.Service.Concrete
         {
             var triggerAdded = new TriggerAdded();
             triggerAdded.UserId = triggerAddModelDto.UserId;
-            triggerAdded.Comment = triggerAddModelDto.comment;
-            
+            triggerAdded.FirstName = triggerAddModelDto.FirstName;
+            triggerAdded.LastName = triggerAddModelDto.LastName;
+            triggerAdded.BirthDate = triggerAddModelDto.BirthDate;
+            triggerAdded.SchoolName= triggerAddModelDto.SchoolName;
+            triggerAdded.SchoolStartTime = triggerAddModelDto.SchoolStartTime;
+            triggerAdded.SchoolFinishTime = triggerAddModelDto.SchoolFinishTime;
+            triggerAdded.Abilities = triggerAddModelDto.Abilities;
+
             if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
-                triggerAdded.Comment = triggerAddModelDto.comment;
-                triggerAdded.Id = triggerAddModelDto.Id;
+                triggerAdded.FirstName = triggerAddModelDto.FirstName;
+                triggerAdded.LastName = triggerAddModelDto.LastName;
+                triggerAdded.BirthDate = triggerAddModelDto.BirthDate;
+                triggerAdded.SchoolName = triggerAddModelDto.SchoolName;
+                triggerAdded.SchoolStartTime = triggerAddModelDto.SchoolStartTime;
+                triggerAdded.SchoolFinishTime = triggerAddModelDto.SchoolFinishTime;
+                triggerAdded.Abilities = triggerAddModelDto.Abilities;
                 _triggerAddedRepository.Insert(triggerAdded);
                 
             }
