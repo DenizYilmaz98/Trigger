@@ -20,9 +20,9 @@ namespace Trigger.Service.Concrete
             _triggerAddedRepository = triggerAddedRepository;
         }
 
-        public void Delete(Guid tableAddedId)
+        public void Delete(Guid triggerAddedId)
         {
-            _triggerAddedRepository.Delete(tableAddedId);
+            _triggerAddedRepository.Delete(triggerAddedId);
         }
 
         public GetTriggerAddedResponseDto Get(Guid id)
@@ -31,9 +31,9 @@ namespace Trigger.Service.Concrete
             return model.Adapt<GetTriggerAddedResponseDto>();
         }
 
-        public List<ListTriggerAddedModelDto> List(Guid userId)
+        public List<ListTriggerAddedModelDto> List()
         {
-            List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List(userId);
+            List<TriggerAdded> triggerAddeds = _triggerAddedRepository.List();
 
             return triggerAddeds.Select(m => m.Adapt<ListTriggerAddedModelDto>()).ToList();
         }
@@ -41,11 +41,11 @@ namespace Trigger.Service.Concrete
         public Guid Save(TriggerAddModelDto triggerAddModelDto)
         {
             var triggerAdded = new TriggerAdded();
-            triggerAdded.UserId = triggerAddModelDto.UserId;
             triggerAdded.FirstName = triggerAddModelDto.FirstName;
             triggerAdded.LastName = triggerAddModelDto.LastName;
             triggerAdded.BirthDate = triggerAddModelDto.BirthDate;
             triggerAdded.SchoolName= triggerAddModelDto.SchoolName;
+            triggerAdded.SchoolStudyName = triggerAddModelDto.SchoolStudyName;
             triggerAdded.SchoolStartTime = triggerAddModelDto.SchoolStartTime;
             triggerAdded.SchoolFinishTime = triggerAddModelDto.SchoolFinishTime;
             triggerAdded.Abilities = triggerAddModelDto.Abilities;
@@ -53,13 +53,6 @@ namespace Trigger.Service.Concrete
             if (triggerAddModelDto.Id==Guid.Empty)
             {
                 triggerAdded.Id = Guid.NewGuid();
-                triggerAdded.FirstName = triggerAddModelDto.FirstName;
-                triggerAdded.LastName = triggerAddModelDto.LastName;
-                triggerAdded.BirthDate = triggerAddModelDto.BirthDate;
-                triggerAdded.SchoolName = triggerAddModelDto.SchoolName;
-                triggerAdded.SchoolStartTime = triggerAddModelDto.SchoolStartTime;
-                triggerAdded.SchoolFinishTime = triggerAddModelDto.SchoolFinishTime;
-                triggerAdded.Abilities = triggerAddModelDto.Abilities;
                 _triggerAddedRepository.Insert(triggerAdded);
                 
             }

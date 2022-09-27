@@ -43,6 +43,7 @@
         .side-header-inner {
             background-color: black;
             height: 100%;
+            width:50%;
         }
 
         .News {
@@ -53,6 +54,11 @@
             top: 10px;
             right: 0px;
         }
+        .btnout{
+            position:relative;
+            bottom:0px;
+        }
+
     </style>
 </head>
 <body>
@@ -68,22 +74,20 @@
                             <a class="nav-link text-dark" href="/Admin/DailyComments">Günlük Gelişim</a>
                         </li>
                            <li>
-                               <a class="nav-link text-dark" href="~/Admin/TriggerAdded">Öz geçmiş</a>
+                               <a class="nav-link text-dark" href="/Admin/TriggerAdded">Öz geçmiş</a>
                            </li>
                         <li>
-                            <a class="nav-link text-dark" href="/Admin/User">#Kullanıcılar</a>
+                            <a class="nav-link text-dark" href="/Admin/User">Kullanıcılar</a>
                         </li>
-
+                        
                         <li>
-                            <a class="btn " href="javascript:logout()">#Çıkış</a>
+                            <a class="btnout" href="javascript:logout()">Çıkış</a>
                         </li>
 
                     </ul>
                 </nav>
             </div>
         </div>
-
-
         <div class="col-9 contentarea">
             @RenderBody()
         </div>

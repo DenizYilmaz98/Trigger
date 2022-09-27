@@ -17,9 +17,14 @@ namespace Trigger.Data.Concrete
             _triggerDbContext = triggerDbContext;
         }
 
-        public List<DailyComments> List(Guid userId)
+        public DailyComments Get(Guid userId)
         {
-         return _triggerDbContext.dailyComments.Where(m=>m.Id==userId).ToList();
+        return  _triggerDbContext.dailyComments.FirstOrDefault();
+                }
+
+        public List<DailyComments> List()
+        {
+         return _triggerDbContext.dailyComments.ToList();
 
         }
 
@@ -27,6 +32,13 @@ namespace Trigger.Data.Concrete
         {
             _triggerDbContext.dailyComments.Add(dailyComments);
             _triggerDbContext.SaveChanges();
+        }
+       public void Delete(Guid id)
+        {
+            var entity = _triggerDbContext.dailyComments.Where(m => m.Id == id).FirstOrDefault();
+            _triggerDbContext.dailyComments.Remove(entity);
+            _triggerDbContext.SaveChanges();
+
         }
     }
 }

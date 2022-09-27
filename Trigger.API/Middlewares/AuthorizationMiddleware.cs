@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -77,10 +76,7 @@ namespace Trigger.API.Middlewares
                     httpContext.Response.StatusCode = 401;
                     return;
                 }
-
-
             }
-
             await _next.Invoke(httpContext);
         }
     }

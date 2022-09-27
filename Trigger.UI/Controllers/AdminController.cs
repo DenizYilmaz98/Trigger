@@ -12,8 +12,6 @@ namespace Trigger.UI.Controllers
     public class AdminController : Controller
     {
         private readonly IOptions<AppSettings> _options;
-
-
         public AdminController(IOptions<AppSettings>options)
         {
             _options = options;
@@ -48,15 +46,21 @@ namespace Trigger.UI.Controllers
         {
             return View("~/Views/Admin/TriggerAdded/Detail.cshtml");
         }
+       
         [HttpGet("DailyComments")]
         public IActionResult DailyComments()
         {
-            return View("~/Views/Admin/DailyComments/Dc.cshtml");
+            return View("~/Views/Admin/DailyComments/List.cshtml");
+        }
+        [HttpGet("DailyComments/Detail")]
+        public IActionResult DailyCommentsDetail(Guid id)
+        {
+            return View("~/Views/Admin/DailyComments/Detail.cshtml", id);
         }
         [HttpGet("DailyComments/Add")]
-        public IActionResult DailyCommentsAdd(Guid id)
+        public IActionResult DailyCommentsAdd()
         {
-            return View("~/Views/Admin/DailyComments/Dc.cshtml",id);
+            return View("~/Views/Admin/DailyComments/Detail.cshtml");
         }
     }
 }

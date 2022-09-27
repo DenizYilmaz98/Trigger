@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Trigger.API.Model.DailyCommentsModel
+namespace Trigger.Service.Model.DailyCommentsModel
 {
-    public class DailyCommentsInputModel
+    public class GetListbyModelDto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string DailyComment { get; set; }
+
     }
 }

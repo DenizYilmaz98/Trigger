@@ -10,8 +10,8 @@ namespace Trigger.Data.Model
  [Table("DailyComments")]
     public class DailyComments:BaseEntity
     {
-        public Guid UserId { get; set; }
-        public string DailyComment { get; set; }
         public string Title { get; set; }
+
+        public string DailyComment { get; set; }
     }
 }

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Trigger.Service.Model.DailyComments
+namespace Trigger.Service.Model.DailyCommentsModel
 {
     public class DailyCommentsModelDto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public string DailyComments { get; set; }
+        public string DailyComment { get; set; }
     }
 }

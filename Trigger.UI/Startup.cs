@@ -49,8 +49,6 @@ namespace Trigger.UI
 
             app.UseRouting();
 
-         
-
             app.UseAuthorization();
 
             app.UseAuthentication(); 

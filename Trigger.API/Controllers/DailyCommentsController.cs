@@ -1,17 +1,12 @@
 ﻿using Mapster;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Trigger.API.Attributes;
 using Trigger.API.Model.DailyCommentsModel;
 using Trigger.API.Model.UserModel;
-using Trigger.Data.Model;
 using Trigger.Service.Abstract;
-using Trigger.Service.Model.DailyComments;
-using static Trigger.API.Model.DailyCommentsModel.DailyCommentsListViewModel;
+using Trigger.Service.Model.DailyCommentsModel;
 
 namespace Trigger.API.Controllers
 {
@@ -32,7 +27,6 @@ namespace Trigger.API.Controllers
         public DailyCommentsViewModel Save(DailyCommentsInputModel dailyCommentsInputModel)
         {
             var data = dailyCommentsInputModel.Adapt<DailyCommentsModelDto>();
-            data.Id = _userContext.UserId;
             var dailyCommentsId = _dailyCommentsService.Save(data);
             return new DailyCommentsViewModel { DailyCommentsId = dailyCommentsId };            
         }
@@ -40,12 +34,27 @@ namespace Trigger.API.Controllers
         [Authorize]
         public DailyCommentsListViewModel List()
         {
-            var DcListResponseModel = _dailyCommentsService.List(_userContext.UserId);
+            var DcListResponseModel = _dailyCommentsService.List();
             return new DailyCommentsListViewModel()
             {
-                List = DcListResponseModel.Select(m => m.Adapt<DailyCommentsAddedViewModel>()).ToList()
+                List = DcListResponseModel.Select(m => m.Adapt<DailyCommentsListModel>()).ToList()
             
             };
+        }
+        [HttpPost("Get")]
+        [Authorize]
+        public GetDailyCommentsViewModel Get(Guid id)
+        {
+            var DcGetModel = _dailyCommentsService.Get(id);
+            return DcGetModel.Adapt<GetDailyCommentsViewModel>();
+
+        }
+        [HttpPost("Delete")]
+        [Authorize]
+
+        public void Delete(Guid id)
+        {
+            _dailyCommentsService.Delete(id);
         }
 
     }

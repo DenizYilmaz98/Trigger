@@ -13,23 +13,165 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body {
-            font-family: "Lato", sans-serif
-        }
+     
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
 
-        .mySlides {
-            display: none
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #bba13d;
+}
+::selection{
+  color: #fff;
+  background: #1da1f2;
+}
+        .wrapper {
+            width: inherit;
+            max-width: 800px;
+            background: #fff;
+            width: 100%;
+            margin-left:150px;
+            margin-bottom:50px;
+            border-radius: 15px;
+            padding: 25px 25px 15px 25px;
+            box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
         }
+.input-box{
+  padding-top: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.input-box .tweet-area{
+  position: relative;
+  min-height: 130px;
+  max-height: 170px;
+  overflow-y: auto;
+}
+.tweet-area::-webkit-scrollbar{
+  width: 0px;
+}
+.tweet-area .placeholder{
+  position: absolute;
+  margin-top: -3px;
+  font-size: 22px;
+  color: #98A5B1;
+  pointer-events: none;
+}
+.tweet-area .input{
+  outline: none;
+  font-size: 17px;
+  min-height: inherit;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.tweet-area .editable{
+  position: relative;
+  z-index: 5;
+}
+.tweet-area .readonly{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: transparent;
+  background: transparent;
+}
+.readonly .highlight{
+  background: #fd9bb0;
+}
+.input-box .privacy{
+  color: #1da1f2;
+  margin: 15px 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.privacy:hover, .icons li:hover{
+  background: #e7f5fe;
+}
+.privacy i{
+  font-size: 18px;
+}
+.privacy span{
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 7px;
+}
+.bottom{
+  display: flex;
+  margin-top: 13px;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom .icons{
+  display: inline-flex;
+}
+.icons li{
+  list-style: none;
+  color: #1da1f2;
+  font-size: 20px;
+  margin: 0 2px;
+  height: 38px;
+  width: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+.bottom .content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom .counter{
+  color: #333;
+  display: none;
+  font-weight: 500;
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid #aab8c2;
+}
+.bottom button{
+  padding: 9px 18px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #ff6a00;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+.bottom button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+.bottom button:hover{
+  background: #0d8bd9;
+}
     </style>
 </head>
 <body>
 
-   
+
     <!-- Page content -->
     <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
         <!-- Automatic Slideshow Images -->
-        <div class="mySlides w3-display-container w3-center">
+        <!--<div class="mySlides w3-display-container w3-center">
             <img src="/w3images/la.jpg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
                 <h3>Los Angeles</h3>
@@ -44,37 +186,44 @@
             </div>
         </div>
         <div class="mySlides w3-display-container w3-center">
-            <img src="/w3images/chicago.jpg" style="width:100%">
+            <img src="~/Images/images.jpeg" style="width:100%">
             <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
                 <h3>Chicago</h3>
                 <p><b>Thank you, Chicago - A night we won't forget.</b></p>
             </div>
-        </div>
-
+        </div>-->
         <!-- The Band Section -->
-        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-            <h2 class="w3-wide">THE BAND</h2>
-            <p class="w3-opacity"><i>We love music</i></p>
-            <p class="w3-justify">
-                We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <div class="w3-row w3-padding-32">
-                <div class="w3-third">
-                    <p>Name</p>
-                    <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <div class="wrapper">
+            <div class="input-box">
+                <h4>Adınızı giriniz :</h4>
+                <input class="form-control" type="text" id="firstName">
+
+                <h4>Soy Adınızı giriniz :</h4>
+                <input class="form-control" type="text" id="lastName">
+
+                <h4>E mail giriniz :</h4>
+                <input class="form-control" type="text" id="email">
+
+                <div class="tweet-area">
+                    <span class="placeholder">Önerin Nedir ?</span>
+                    <div class="input editable" contenteditable="true" spellcheck="false"></div>
+                    <div class="input readonly" contenteditable="true" spellcheck="false"></div>
                 </div>
-                <div class="w3-third">
-                    <p>Name</p>
-                    <img src="/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                <div class="privacy">
+                    <i class="fas fa-globe-asia"></i>
+                    <span>Everyone can reply</span>
                 </div>
-                <div class="w3-third">
-                    <p>Name</p>
-                    <img src="/w3images/bandmember.jpg" class="w3-round" alt="Random Name" style="width:60%">
+            </div>
+            <div class="bottom">
+               
+                <div class="content">
+                    <span class="counter">100</span>
+                    <button onclick="javascript:save()">Gönderi</button>
                 </div>
             </div>
         </div>
+
+
 
         <!-- The Tour Section -->
         <div class="w3-black" id="tour">
@@ -90,25 +239,25 @@
 
                 <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
                     <div class="w3-third w3-margin-bottom">
-                        <img src="/w3images/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
+                        <img src="~/Images/104878.jpg" alt="Future" style="width:100%" class="w3-hover-opacity">
                         <div class="w3-container w3-white">
-                            <p><b>New York</b></p>
+                            <p><b>Future</b></p>
                             <p class="w3-opacity">Fri 27 Nov 2016</p>
                             <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Hakkımızda</button>
                         </div>
                     </div>
                     <div class="w3-third w3-margin-bottom">
-                        <img src="/w3images/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+                        <img src="~/Images/535112.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
                         <div class="w3-container w3-white">
                             <p><b>Paris</b></p>
                             <p class="w3-opacity">Sat 28 Nov 2016</p>
                             <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Misyonumuz</button>
                         </div>
                     </div>
                     <div class="w3-third w3-margin-bottom">
-                        <img src="/w3images/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                        <img src="~/Images/indir.jpeg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
                         <div class="w3-container w3-white">
                             <p><b>San Francisco</b></p>
                             <p class="w3-opacity">Sun 29 Nov 2016</p>
@@ -140,33 +289,6 @@
             </div>
         </div>
 
-        <!-- The Contact Section -->
-        <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-            <h2 class="w3-wide w3-center">CONTACT</h2>
-            <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
-            <div class="w3-row w3-padding-32">
-                <div class="w3-col m6 w3-large w3-margin-bottom">
-                    <i class="fa fa-map-marker" style="width:30px"></i>İstanbul, TR<br>
-                    <i class="fa fa-phone" style="width:30px"></i> Phone: +90 530 151 15 15<br>
-                    <i class="fa fa-envelope" style="width:30px"> </i> Email: trigger@mail.com<br>
-                </div>
-                <div class="w3-col m6">
-                    <form action="/action_page.php" target="_blank">
-                        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-                            <div class="w3-half">
-                                <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-                            </div>
-                            <div class="w3-half">
-                                <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-                            </div>
-                        </div>
-                        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-                        <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <!-- End Page Content -->
     </div>
 
@@ -182,6 +304,13 @@
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
         <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        <div class="w3-col m6 w3-large w3-margin-bottom">
+            <h3>Contact</h3>
+
+            <i class="fa fa-map-marker" style="width:30px"></i>İstanbul, TR<br>
+            <i class="fa fa-phone" style="width:30px"></i> Phone: +90 530 151 15 15<br>
+            <i class="fa fa-envelope" style="width:30px"> </i> Email: trigger@mail.com<br>
+        </div>
     </footer>
 
     <script>
@@ -222,3 +351,4 @@
 
 </body>
 </html>
+<script src="script.js"></script>

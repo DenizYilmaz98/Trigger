@@ -7,12 +7,13 @@ namespace Trigger.API.Model.DailyCommentsModel
 {
     public class DailyCommentsListViewModel
     {
-        public List<DailyCommentsAddedViewModel>List{get;set;}
-  
-        public class DailyCommentsAddedViewModel
+        public List<DailyCommentsListModel> List { get; set; }
+    }
+        public class DailyCommentsListModel
         {
             public Guid Id { get; set; }
+            public string Title { get; set; }
             public string DailyComment { get; set; }
         }
-    }
+    
 }

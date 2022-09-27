@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Trigger.Data.Abstract;
 using Trigger.Data.Model;
 using Trigger.Service.Abstract;
-using Trigger.Service.Model.DailyComments;
+using Trigger.Service.Model.DailyCommentsModel;
 
 namespace Trigger.Service.Concrete
 {
@@ -19,25 +19,33 @@ namespace Trigger.Service.Concrete
         {
             _dailyCommentsRepository = dailyCommentsRepository;
         }
-
-        public List<GetListbyModelDto> List(Guid userId)
+        public void Delete(Guid id)
         {
-            List<DailyComments> dailyComments = _dailyCommentsRepository.List(userId);
+            _dailyCommentsRepository.Delete(id);
+        }
+        public GetDailyCommentsResponseDto Get(Guid id)
+        {
+            var dailycommentsresponse = _dailyCommentsRepository.Get(id);
+            return dailycommentsresponse.Adapt<GetDailyCommentsResponseDto>();
+   
+        }
+
+        public List<GetListbyModelDto> List()
+        {
+            List<DailyComments> dailyComments = _dailyCommentsRepository.List();
             return dailyComments.Select(m => m.Adapt<GetListbyModelDto>()).ToList(); 
         }
 
         public Guid Save(DailyCommentsModelDto dailyCommentsModelDto)
         {
             var dailyComments = new DailyComments();
-            dailyComments.Id = dailyCommentsModelDto.Id;
             dailyComments.Title = dailyCommentsModelDto.Title;
-            dailyComments.DailyComment = dailyCommentsModelDto.DailyComments;
+            dailyComments.DailyComment = dailyCommentsModelDto.DailyComment;
+
             if (dailyCommentsModelDto.Id==Guid.Empty)
             {
                 dailyComments.Id = Guid.NewGuid();
-                dailyComments.Title = dailyCommentsModelDto.Title;
-                dailyComments.DailyComment = dailyCommentsModelDto.Title;
-                _dailyCommentsRepository.Save(dailyComments);
+                _dailyCommentsRepository.Insert(dailyComments);
             }
             else
             {

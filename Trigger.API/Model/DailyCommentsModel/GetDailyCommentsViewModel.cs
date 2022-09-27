@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace Trigger.API.Model.DailyCommentsModel
 {
-    public class DailyCommentsInputModel
+    public class GetDailyCommentsViewModel
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
+
         public string DailyComment { get; set; }
+    
     }
 }

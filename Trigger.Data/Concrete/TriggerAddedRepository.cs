@@ -16,7 +16,7 @@ namespace Trigger.Data.Concrete
         {
             _triggerDbContext = triggerDbContext;
         }
-        public void Add(TriggerAdded triggerAdded)
+        public void Save(TriggerAdded triggerAdded)
         {
              _triggerDbContext.Add(triggerAdded);
             _triggerDbContext.SaveChanges();
@@ -31,12 +31,12 @@ namespace Trigger.Data.Concrete
 
         public TriggerAdded Get(Guid userId)
         {
-            return _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).FirstOrDefault();
+            return _triggerDbContext.triggerAddeds.FirstOrDefault();
         }
 
-        public List<TriggerAdded> List(Guid userId)
+        public List<TriggerAdded> List()
         {
-            return _triggerDbContext.triggerAddeds.Where(m => m.UserId == userId).ToList();
+            return _triggerDbContext.triggerAddeds.ToList();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Trigger.Service.Abstract
         public Guid Save(TriggerAddModelDto triggerAddModelDto);
         GetTriggerAddedResponseDto Get(Guid tableAddedId);
         void Delete(Guid tableAddedId);
-        List<ListTriggerAddedModelDto> List(Guid userId);
+        List<ListTriggerAddedModelDto> List();
             
     }
 }

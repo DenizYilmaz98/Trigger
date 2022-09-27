@@ -1,15 +1,12 @@
 ﻿using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Trigger.API.Attributes;
 using Trigger.API.Model.TriggerAddedModel;
 using Trigger.API.Model.UserModel;
 using Trigger.Service.Abstract;
 using Trigger.Service.Model.TriggerAddedModel;
-using static Trigger.Service.Model.TriggerAddedModel.TriggerAddedListViewModel;
 
 namespace Trigger.API.Controllers
 {
@@ -31,7 +28,6 @@ namespace Trigger.API.Controllers
         {
             
             var model = triggerAddedInputModel.Adapt<TriggerAddModelDto>();
-            model.UserId = _userContext.UserId;
             var triggerAddedId = _triggerAddedService.Save(model);
             return new TriggerAddedViewModel { TriggerAddedId = triggerAddedId };
         }
@@ -46,7 +42,7 @@ namespace Trigger.API.Controllers
         [Authorize]
         public TriggerAddedViewListModel List()
         {
-            var triggermodel = _triggerAddedService.List(_userContext.UserId);
+            var triggermodel = _triggerAddedService.List();
             return new TriggerAddedViewListModel()
             {
                 List = triggermodel.Select(m => m.Adapt<TriggerAddedListModel>()).ToList()
@@ -54,7 +50,7 @@ namespace Trigger.API.Controllers
             };
 
         }
-
+        
         [HttpPost("Delete")]
         [Authorize]
         public void Delete(Guid id)

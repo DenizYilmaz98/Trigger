@@ -4,32 +4,39 @@
     Layout = "~/Views/Admin/Shared/_Layout.cshtml";
 }
 
-
+<style>
+    .login-register-form
+    {
+        position:center;
+        border-radius:5px;
+        padding:20px;
+        border:2px solid #ff6a00;
+    }
+</style>
 <script>
-      var Id = '@Model';
 
+    var Id = '@Model';
     function save() {
 
-            var firstname = $("#firstname").val();
-            var lastname = $("#lastname").val();
-            var birthdate = $("#birthdate").val();
-            var schoolname = $("#schoolname").val();
-            var schoolstudyname = $("#schoolstudyname").val();
-            var schoolstarttime = $("#schoolstarttime").val();
-            var schoolfinishtime = $("#schoolfinishtime").val();
+            var firstName = $("#firstName").val();
+            var lastName = $("#lastName").val();
+            var birthDate = $("#birthDate").val();
+            var schoolName = $("#schoolName").val();
+            var schoolStudyName = $("#schoolStudyName").val();
+            var schoolStartTime = $("#schoolStartTime").val();
+            var schoolFinishTime = $("#schoolFinishTime").val();
             var abilities = $("#abilities").val();
-            const data = {
-                firstname: firstname, lastname: lastname, birthdate: birthdate, schoolname: schoolname, schoolstudyname: schoolstudyname, schoolstarttime: schoolstarttime
-                , schoolfinishtime: schoolfinishtime, abilities: abilities,id:Id
-            };
 
-            var token = localStorage.getItem("token");
+            const data = { firstName: firstName, lastname: lastName, birthDate: birthDate, schoolName: schoolName, schoolStudyName: schoolStudyName, schoolStartTime: schoolStartTime,
+                     schoolFinishTime: schoolFinishTime, abilities: abilities,id:Id };
 
-        fetch(ApiUrl + 'triggeradded/save', {
+        var token = localStorage.getItem("token");
+
+        fetch(ApiUrl+'triggeradded/save', {
             method: 'POST', // or 'PUT
             headers: {
                 'Content-Type': 'application/json',
-                "token": token
+                'token': token
             },
             body: JSON.stringify(data),
         })
@@ -47,52 +54,60 @@
     $(document).ready(function () {
         if (Id != "") {
             var token = localStorage.getItem("token");
-            fetch(ApiUrl + 'triggeradded/get?id=' + Id, {
+
+            fetch(ApiUrl +'triggeradded/get?id=' + Id, {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            })
+                })
+
                 .then(response => response.json())
                 .then(data => {
                     if (data) {
-
-                        $("#firstname").val(data.firstname);
-                        $("#lastname").val(data.lastname);
-                        $("#birthdate").val(data.birthdate);
-                        $("#schoolname").val(data.schoolname);
-                        $("#schoolstudyname").val(data.schoolstudyname);
-                        $("#schoolstarttime").val(data.schoolstarttime);
-                        $("#schoolfinishtime").val(data.schoolfinishtime);
+                        $("#firstName").val(data.firstName);
+                        $("#lastName").val(data.lastName);
+                        $("#birthDate").val(data.birthDate);
+                        $("#schoolName").val(data.schoolName);
+                        $("#schoolStudyName").val(data.schoolStudyName);
+                        $("#schoolStartTime").val(data. schoolStartTime);
+                        $("#schoolFinishTime").val(data.schoolFinishTime);
                         $("#abilities").val(data.abilities);
                     }
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                //    console.error('Error:', error);
                 });
         }
     })
 
 </script>
 <div class="login-register-form">
-    <div id="cont" class="row">
-        <input class="form-control" type="text" id="firstname" placeholder="Adınızı giriniz">
+   
+        <h4>Adınızı giriniz :</h4>
+        <input class="form-control" type="text" id="firstName" >
+
+        <h4>Soy Adınızı giriniz :</h4>
+        <input class="form-control" type="text" id="lastName" >
+
+        <h4>Doğum tarihini giriniz :</h4>
+        <input class="form-control" type="date" id="birthDate" >
+
+        <h4>Okul adını Giriniz :</h4>
+        <input class="form-control" type="text" id="schoolName" >
+
+        <h4>Okul bölümü giriniz :</h4>
+        <input class="form-control" type="text" id="schoolStudyName" >
+
+        <h4>Okul başlangıç tarihini giriniz :</h4>
+        <input class="form-control" type="date" id="schoolStartTime" >
         
-        <input class="form-control" type="text" id="lastname" placeholder="Soy adınızı giriniz">
-       
-        <input class="form-control" type="datetime" id="birthdate" placeholder="Doğum tarihini giriniz">
-        
-        <input class="form-control" type="text" id="schoolname" placeholder="Okul adını Giriniz">
-        
-        <input class="form-control" type="text" id="schoolstudyname" placeholder="Okul bölümü giriniz">
-        
-        <input class="form-control" type="datetime" id="schoolstarttime" placeholder="Okul başlangıç tarihini giriniz">
-       
-        <input class="form-control" type="datetime" id="schoolfinishtime" placeholder="Okul bitiş tarihini giriniz">
-        
-        <input class="form-control" type="text" id="abilities" placeholder="Yeteneklerinizi giriniz">
-      
+        <h4>Okul bitiş tarihini giriniz : </h4>
+        <input class="form-control" type="date" id="schoolFinishTime" >
+
+        <h4>Yeteneklerinizi giriniz :</h4>
+        <input class="form-control" type="text" id="abilities" >
+        <br />
         <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
-    </div>
 </div>

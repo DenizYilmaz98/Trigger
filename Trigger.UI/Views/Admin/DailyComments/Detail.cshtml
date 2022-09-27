@@ -1,0 +1,76 @@
+﻿@model Guid;
+@{
+    Layout = "~/Views/Admin/Shared/_Layout.cshtml";
+}
+<div class="login-">
+
+</div>
+<script>
+    var Id='@Model';
+    function save() {
+        var title=$("#title").val();
+        var dailyComment=$("#dailyComment").val();
+
+        const data = { title: title, dailyComment: dailyComment, Id:Id }
+
+
+        var token = localStorage.getItem("token");
+
+        fetch(ApiUrl + 'dailycomments/save', {
+            method: 'POST', // or 'PUT
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data) alert("kayıt başarılı")
+                document.location.href = "/Admin/DailyComments";
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+
+            });
+    }
+    $(document).ready(function () {
+        if (Id != "") {
+            var token = localStorage.getItem("token");
+
+            fetch(ApiUrl + 'dailycomments/get?id=' + Id, {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            })
+
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        $("#title").val(data.title);
+                        $("#dailyComment").val(data.dailyComment);
+
+                    }
+                })
+                .catch((error) => {
+                    //    console.error('Error:', error);
+                });
+        }
+    })
+
+
+</script>
+<div class="login-register-form">
+
+    <h4>Başlık :</h4>
+    <input class="form-control"  placeholder="Başlık"  type="text" id="title">
+
+    <h4>Gönderi :</h4>
+    <input class="form-control" placeholder="Konu Giriniz" type="text" id="dailyComment">
+
+    <br />
+    <button class="button button-android button-outline" onclick="javascript:save()">Kaydet</button>
+</div>
